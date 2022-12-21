@@ -1,8 +1,14 @@
 import { IPost } from "@interfaces/index";
-import React from "react";
 
-const Post = ({}: IPost) => {
-  return <div>Post</div>;
+const Post = ({ author, content }: IPost) => {
+  return (
+    <div>
+      <p>
+        <strong>{author}</strong>
+      </p>
+      <p>{content}</p>
+    </div>
+  );
 };
 
 export default Post;
