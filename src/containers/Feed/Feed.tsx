@@ -1,6 +1,6 @@
-import Post from "@components/UI/Atom/Post";
+import Post from "@components/UI/Organism/Post";
+import Sidebar from "@components/UI/Molecule/Sidebar";
 import Header from "@components/UI/Organism/Header";
-import React from "react";
 
 import * as S from "./styles";
 
@@ -9,18 +9,12 @@ const Feed = () => {
     <div>
       <Header />
       <S.Wrapper>
-        <S.SideBar>Sidebar</S.SideBar>
+        <Sidebar
+          backgroundCoverImg="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZGV2ZWxvcGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=40"
+          avatarImg="https://avatars.githubusercontent.com/u/75099576?v=4"
+        />
         <S.MainContent>
-          <Post
-            author="Mateus Cesar"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Repellendus vel sunt praesentium deserunt delectus eaque eligendi voluptatem"
-          />
-          <Post
-            author="Joaozinho dez ano"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Repellendus vel sunt praesentium deserunt delectus eaque eligendi voluptatem"
-          />
+          <Post img="https://avatars.githubusercontent.com/u/53570263?v=4" />
         </S.MainContent>
       </S.Wrapper>
     </div>

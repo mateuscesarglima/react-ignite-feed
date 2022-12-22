@@ -11,6 +11,4 @@ export const Wrapper = styled.div`
   align-items: flex-start;
 `;
 
-export const SideBar = styled.aside``;
-
 export const MainContent = styled.main``;
