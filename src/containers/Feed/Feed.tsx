@@ -1,6 +1,7 @@
 import Post from "@components/UI/Organism/Post";
 import Sidebar from "@components/UI/Molecule/Sidebar";
 import Header from "@components/UI/Organism/Header";
+import { posts } from "@constants/posts";
 
 import * as S from "./styles";
 
@@ -14,7 +15,16 @@ const Feed = () => {
           avatarImg="https://avatars.githubusercontent.com/u/75099576?v=4"
         />
         <S.MainContent>
-          <Post img="https://avatars.githubusercontent.com/u/53570263?v=4" />
+          {posts.map((post) => {
+            return (
+              <Post
+                key={post.id}
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            );
+          })}
         </S.MainContent>
       </S.Wrapper>
     </div>

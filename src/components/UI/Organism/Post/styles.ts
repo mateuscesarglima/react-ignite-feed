@@ -4,8 +4,9 @@ export const PostContainer = styled.article`
   background: var(--gray-800);
   padding: 2.5rem;
   border-radius: 8px;
+  margin-bottom: 1.5rem;
 
-  header {
+  > header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;
@@ -59,11 +60,12 @@ export const Content = styled.div`
 export const FormContainer = styled.form`
   border-top: 1px solid var(--gray-600);
   margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  line-height: 1.6;
 
   > strong {
-    display: block;
-    margin-top: 1.5rem;
-    color: #fff;
+    line-height: 1.6;
+    color: var(--gray-100);
   }
 
   > textarea {
@@ -71,22 +73,41 @@ export const FormContainer = styled.form`
     height: 6rem;
     background: var(--gray-900);
     border-radius: 8px;
-    border-color: var(--green-300);
+    border: 0;
+    resize: none;
     margin-top: 1rem;
+    color: var(--gray-100);
+    padding: 1rem;
+    line-height: 1.6;
   }
 
-  > button {
-    margin-top: 1rem;
-    padding: 1rem 1.5rem;
-    background: var(--green-500);
-    border: none;
-    border-radius: 8px;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
+  > footer {
+    visibility: hidden;
+    max-height: 0;
 
-    &:hover {
-      background: var(--green-300);
+    button {
+      margin-top: 1rem;
+      padding: 1rem 1.5rem;
+      background: var(--green-500);
+      border: none;
+      border-radius: 8px;
+      color: var(--white);
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background: var(--green-300);
+      }
     }
   }
+
+  &:focus-within footer {
+    visibility: visible;
+    max-height: none;
+  }
+`;
+
+export const CommentList = styled.div`
+  margin-top: 2rem;
 `;

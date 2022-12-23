@@ -13,15 +13,28 @@ export default createGlobalStyle`
 
     --green-300: #00B37E;
     --green-500: #00875F;
-    
 
+    --red-500: #f75a68;
+  
   }
+
+  :focus {
+    outline: transparent;
+    box-shadow: 0 0 0 2px var(--green-500);
+  }
+  
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
+  html {
+    @media (max-width: 768px) {
+    font-size: 87.5%;
+  }
+  }
+
   body {
    background-color: var(--gray-900);
    color: var(--gray-300);
@@ -33,4 +46,5 @@ export default createGlobalStyle`
     font-weight: 400;
     font-size: 1rem;
   }
+
 `;

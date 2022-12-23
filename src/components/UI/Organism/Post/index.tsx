@@ -1,42 +1,69 @@
 import Avatar from "@components/UI/Atom/Avatar";
+import Comment from "@components/UI/Molecule/Comment";
 import { IPost } from "@interfaces/index";
+import { format, formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import * as S from "./styles";
 
-const Post = ({ img }: IPost) => {
+const Post = ({ author, content, publishedAt }: IPost) => {
+  const publishedDateFormatted = format(
+    publishedAt,
+    "d 'de' LLLL 'às' HH:mm'h'",
+    {
+      locale: ptBR,
+    }
+  );
+
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+    locale: ptBR,
+    addSuffix: true,
+  });
   return (
     <S.PostContainer>
       <header>
         <S.Author>
-          <Avatar img={img} />
+          <Avatar img={author.avatarUrl} hasBorder={true} />
           <S.AuthorInfo>
-            <strong>Adamor Henner</strong>
-            <span>Backend Developer</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </S.AuthorInfo>
         </S.Author>
-        <S.Time title="11 de Maio às 8:13" dateTime="2022-05-11 08:13:00">
-          Publicado há 1h
+        <S.Time
+          title={publishedDateFormatted}
+          dateTime={publishedAt.toISOString()}
+        >
+          {publishedDateRelativeToNow}
         </S.Time>
       </header>
       <S.Content>
-        <p>Fala galeraa 👋 </p>
-        <p>
-          Acabei de subir mais um projeto no meu portifa. É um projeto que fiz
-          no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀{" "}
-        </p>
-        <p>
-          👉 <a href="#"> jane.design/doctorcare </a>
-        </p>
-
-        <p>
-          {" "}
-          <a href=""> #novoprojeto #nlw #rocketseat </a>
-        </p>
+        {content.map((line) => {
+          if (line.type === "paragraph") {
+            return <p>{line.content}</p>;
+          } else if (line.type === "link") {
+            return (
+              <p>
+                <a href="#">{line.content}</a>
+              </p>
+            );
+          }
+        })}
       </S.Content>
       <S.FormContainer>
         <strong>Deixe seu feedback</strong>
-        <textarea name="feedback" id="feedback" />
-        <button>Publicar</button>
+        <textarea
+          name="feedback"
+          id="feedback"
+          placeholder="Escreva alguma coisa..."
+        />
+        <footer>
+          <button type="submit">Publicar</button>
+        </footer>
       </S.FormContainer>
+      <S.CommentList id="comment-list">
+        <Comment />
+        <Comment />
+        <Comment />
+      </S.CommentList>
     </S.PostContainer>
   );
 };

@@ -1,5 +1,24 @@
+export interface IAuthor {
+  avatarUrl: string;
+  name: string;
+  role: string;
+}
+
+export interface IPostContent {
+  type: string;
+  content: string;
+}
+
 export interface IPost {
-  img: string;
+  author: IAuthor;
+  content: IPostContent[];
+  publishedAt: Date;
+}
+
+export interface IComment {
+  author: Omit<IAuthor, "role">;
+  content: IPostContent;
+  publishedAt: Date;
 }
 
 export interface ISidebar {
@@ -9,4 +28,5 @@ export interface ISidebar {
 
 export interface IAvatar {
   img: string;
+  hasBorder: boolean;
 }

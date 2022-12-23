@@ -8,7 +8,7 @@ const Sidebar = ({ avatarImg, backgroundCoverImg }: ISidebar) => {
     <S.Aside>
       <S.AsideHeaderImage src={backgroundCoverImg} alt="developer image" />
       <S.Profile>
-        <Avatar img={avatarImg} />
+        <Avatar img={avatarImg} hasBorder={true} />
         <strong>Mateus Cesar</strong>
         <span>Web Developer</span>
       </S.Profile>

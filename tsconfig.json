@@ -7,7 +7,8 @@
       "@assets/*": ["./assets/*"],
       "@styles/*": ["./styles/*"],
       "@types/*": ["./types/*"],
-      "@interfaces/*": ["./interfaces/*"]
+      "@interfaces/*": ["./interfaces/*"],
+      "@constants/*": ["./constants/*"]
     },
     "target": "ESNext",
     "useDefineForClassFields": true,
