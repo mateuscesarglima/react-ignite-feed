@@ -1,13 +1,15 @@
 import Avatar from "@components/UI/Atom/Avatar";
 import { IComment } from "@interfaces/index";
 import { ThumbsUp, Trash } from "phosphor-react";
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./styles";
 
-const Comment = () => {
+const Comment = ({ content, deleteCommentHandle }: IComment) => {
+  const [likeCount, setLikeCount] = useState<number>(0);
+
   return (
     <S.CommentContainer>
-      <Avatar img="https://github.com/mateuscesarglima.png" hasBorder={false} />
+      <Avatar src="https://github.com/mateuscesarglima.png" hasBorder={false} />
       <S.CommentBox>
         <S.CommentContent>
           <header>
@@ -17,17 +19,20 @@ const Comment = () => {
                 Cerca de 1h
               </time>
             </S.authorAndTime>
-            <button title="Deletar Comentário">
+            <button
+              onClick={() => deleteCommentHandle(content)}
+              title="Deletar Comentário"
+            >
               <Trash size={24} />
             </button>
           </header>
 
-          <p>Muito bom Adamor 👏👏</p>
+          <p>{content}</p>
         </S.CommentContent>
         <S.CommentFooter>
-          <button>
+          <button onClick={() => setLikeCount(likeCount + 1)}>
             <ThumbsUp size={20} />
-            Aplaudir &#8226; <span>20</span>
+            Aplaudir &#8226; <span>{likeCount}</span>
           </button>
         </S.CommentFooter>
       </S.CommentBox>

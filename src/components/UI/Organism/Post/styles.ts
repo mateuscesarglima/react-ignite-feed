@@ -96,8 +96,13 @@ export const FormContainer = styled.form`
       cursor: pointer;
       transition: background-color 0.2s;
 
-      &:hover {
+      &:hover:not(:disabled):hover {
         background: var(--green-300);
+      }
+
+      &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
       }
     }
   }

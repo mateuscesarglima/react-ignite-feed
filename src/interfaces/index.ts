@@ -1,3 +1,5 @@
+import React, { ImgHTMLAttributes, MouseEventHandler } from "react";
+
 export interface IAuthor {
   avatarUrl: string;
   name: string;
@@ -16,9 +18,8 @@ export interface IPost {
 }
 
 export interface IComment {
-  author: Omit<IAuthor, "role">;
-  content: IPostContent;
-  publishedAt: Date;
+  content: string;
+  deleteCommentHandle: (comment: string) => void;
 }
 
 export interface ISidebar {
@@ -26,7 +27,6 @@ export interface ISidebar {
   avatarImg: string;
 }
 
-export interface IAvatar {
-  img: string;
+export interface IAvatar extends ImgHTMLAttributes<HTMLImageElement> {
   hasBorder: boolean;
 }
